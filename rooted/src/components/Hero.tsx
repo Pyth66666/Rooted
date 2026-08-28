@@ -36,24 +36,11 @@ export default function Hero() {
           <div className="animate-fade-up animate-delay-300 relative flex items-center justify-center lg:h-full">
             <div className="relative w-full max-w-lg">
               <div className="aspect-[4/5] overflow-hidden rounded-sm bg-cream">
-                <div className="flex h-full w-full flex-col items-center justify-center p-8">
-                  <div className="mb-6 flex h-48 w-32 flex-col items-center justify-center rounded-sm border border-sage/15 bg-ivory shadow-sm sm:h-64 sm:w-40">
-                    <svg className="mb-3 h-10 w-10 text-sage/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L19 14.5m-4.25-8.646c.251.023.501.05.75.082M5 14.5l-.94 2.06a2.25 2.25 0 002.03 3.19h9.82a2.25 2.25 0 002.03-3.19L19 14.5" />
-                    </svg>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-muted/50">Product</span>
-                  </div>
-                  <div className="space-y-2 text-center">
-                    <div className="mx-auto h-1.5 w-24 rounded-full bg-sage/10" />
-                    <div className="mx-auto h-1.5 w-20 rounded-full bg-sage/8" />
-                    <div className="mx-auto h-1.5 w-16 rounded-full bg-sage/5" />
-                  </div>
-                  <div className="mt-6 flex gap-2">
-                    {["🌿", "🍃", "🪵"].map((e, i) => (
-                      <span key={i} className="text-lg opacity-30">{e}</span>
-                    ))}
-                  </div>
-                </div>
+                <img
+                  src="/hero.jpg"
+                  alt="Hair care product"
+                  className="h-full w-full object-cover"
+                />
               </div>
               <div className="absolute -bottom-4 -right-4 h-24 w-24 rounded-full bg-sage/5 lg:-bottom-6 lg:-right-6 lg:h-32 lg:w-32" />
               <div className="absolute -top-4 -left-4 h-16 w-16 rounded-full bg-earth/5 lg:-top-6 lg:-left-6 lg:h-20 lg:w-20" />
