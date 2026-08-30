@@ -150,11 +150,10 @@ export async function POST(request: Request) {
   }
 
   // ponytail: trust boundary — coerce model output instead of full schema validation (zod), add when input grows beyond this one shape
-  let text: string | undefined;
   const candidates = (
     data as { candidates?: { content?: { parts?: { text?: string }[] } }[] }
   ).candidates;
-  text = candidates?.[0]?.content?.parts?.[0]?.text;
+  const text = candidates?.[0]?.content?.parts?.[0]?.text;
 
   if (!text) {
     return Response.json(
@@ -181,19 +180,19 @@ export async function POST(request: Request) {
     name: String(parsed.name).slice(0, 200),
     brand: String(parsed.brand ?? "Unknown").slice(0, 100),
     category: String(parsed.category ?? "Hair Product").slice(0, 100),
-    summary: String(parsed.summary ?? "").slice(0, 1000),
-    bestFor: (parsed.bestFor ?? []).slice(0, 8).map((s) => String(s).slice(0, 100)),
-    consider: (parsed.consider ?? []).slice(0, 8).map((s) => String(s).slice(0, 100)),
+    summary: String(parsed.summary ?? "").slice(0, 3000),
+    bestFor: (parsed.bestFor ?? []).slice(0, 8).map((s) => String(s).slice(0, 300)),
+    consider: (parsed.consider ?? []).slice(0, 8).map((s) => String(s).slice(0, 300)),
     ingredients: parsed.ingredients
       .filter((i) => i && typeof i.name === "string")
       .slice(0, 30)
       .map((i) => ({
-        name: String(i.name).slice(0, 100),
+        name: String(i.name).slice(0, 200),
         category: (CATEGORIES as readonly string[]).includes(i.category)
           ? (i.category as Category)
           : "BOTANICAL",
-        description: String(i.description ?? "").slice(0, 150),
-        detail: String(i.detail ?? "").slice(0, 300),
+        description: String(i.description ?? "").slice(0, 800),
+        detail: String(i.detail ?? "").slice(0, 2500),
       })),
   };
 

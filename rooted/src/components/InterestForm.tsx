@@ -15,6 +15,24 @@ const CONCERNS = [
   "Other",
 ];
 
+const AGE_GROUPS = [
+  "Under 18",
+  "18–24",
+  "25–34",
+  "35–44",
+  "45–54",
+  "55+",
+];
+
+const BUDGETS = [
+  "Under RM20",
+  "RM20–RM40",
+  "RM40–RM60",
+  "RM60–RM100",
+  "RM100+",
+  "I don't mind",
+];
+
 interface Props {
   onComplete: () => void;
 }
@@ -23,12 +41,14 @@ export default function InterestForm({ onComplete }: Props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [concern, setConcern] = useState("");
+  const [ageGroup, setAgeGroup] = useState("");
+  const [budget, setBudget] = useState("");
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
-    track("email_submitted", { name, email, concern });
-    if (concern) track("hair_concern_selected", { concern });
+    if (!email.trim() || !concern || !ageGroup || !budget) return;
+    track("email_submitted", { name, email, concern, ageGroup, budget });
+    track("hair_concern_selected", { concern });
     onComplete();
   };
 
@@ -70,10 +90,10 @@ export default function InterestForm({ onComplete }: Props) {
           </div>
           <div>
             <label className="mb-1.5 block text-xs font-medium uppercase tracking-[0.15em] text-muted">
-              What&apos;s your biggest hair concern?{" "}
-              <span className="normal-case">(optional)</span>
+              What&apos;s your biggest hair concern?
             </label>
             <select
+              required
               value={concern}
               onChange={(e) => setConcern(e.target.value)}
               className="w-full appearance-none border-b border-sage/20 bg-transparent py-3 text-sm text-charcoal outline-none transition-colors focus:border-sage"
@@ -82,6 +102,43 @@ export default function InterestForm({ onComplete }: Props) {
               {CONCERNS.map((c) => (
                 <option key={c} value={c}>
                   {c}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-[0.15em] text-muted">
+              Age group
+            </label>
+            <select
+              required
+              value={ageGroup}
+              onChange={(e) => setAgeGroup(e.target.value)}
+              className="w-full appearance-none border-b border-sage/20 bg-transparent py-3 text-sm text-charcoal outline-none transition-colors focus:border-sage"
+            >
+              <option value="">Select one</option>
+              {AGE_GROUPS.map((g) => (
+                <option key={g} value={g}>
+                  {g}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-[0.15em] text-muted">
+              How much would you pay for a product that actually works on your
+              hair?
+            </label>
+            <select
+              required
+              value={budget}
+              onChange={(e) => setBudget(e.target.value)}
+              className="w-full appearance-none border-b border-sage/20 bg-transparent py-3 text-sm text-charcoal outline-none transition-colors focus:border-sage"
+            >
+              <option value="">Select one</option>
+              {BUDGETS.map((b) => (
+                <option key={b} value={b}>
+                  {b}
                 </option>
               ))}
             </select>
