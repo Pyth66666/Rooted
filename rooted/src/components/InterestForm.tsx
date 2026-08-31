@@ -44,11 +44,20 @@ export default function InterestForm({ onComplete }: Props) {
   const [ageGroup, setAgeGroup] = useState("");
   const [budget, setBudget] = useState("");
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !concern || !ageGroup || !budget) return;
     track("email_submitted", { name, email, concern, ageGroup, budget });
     track("hair_concern_selected", { concern });
+    try {
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, concern, ageGroup, budget }),
+      });
+    } catch (err) {
+      console.error("Lead save failed:", err);
+    }
     onComplete();
   };
 
