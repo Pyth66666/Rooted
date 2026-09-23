@@ -3,7 +3,7 @@
 ## Available locally
 
 - The scanner now shows its free ingredient result without a lead form. It checks JPG/PNG file signatures and no longer saves uploaded originals to a public bucket. Images are still sent to the configured Google Gemini service for analysis.
-- The shampoo advisor has six consultation screens, review and editing, local draft recovery, a server validated matching endpoint, an explicit no-match state, and a demonstration catalogue. The fixtures are fictional and are **not** retailer offers or verified product formulations.
+- The shampoo advisor has six consultation screens, review and editing, local draft recovery, a server validated matching endpoint, an explicit no-match state, and 10 real Malaysian-market shampoo records with online source evidence. The app currently reads the bundled versioned catalogue; prices are dated snapshots and formulations have not been checked against physical bottles.
 - Email OTP account UI and authenticated save/list/delete endpoints are present. The server checks each Supabase access token with `auth.getUser`, derives the user ID from it, and filters each operation by that ID. The included migration enables RLS for saved profiles and removes public access to legacy tables. Apply and test the migration before turning on accounts.
 - The RM10 path is paused in production. The old Billplz code has not been validated against the provider's callback signature or amount and bill ID mapping. Development confirmation is blocked in production. No customer should be charged until the adapter is replaced and tested in Billplz sandbox.
 
@@ -17,7 +17,7 @@
 
 ## Consultation question purpose
 
-All six screens are for matching, not research. Hair shape and strand thickness inform texture and weight; scalp condition informs cleansing and comfort; selected concerns set priorities; recent treatments and washing routine provide care context; heat, sweat and head covering habits provide Malaysian use context; fragrance preference, known sensitivity and budget guide exclusions and ordering. “None” is exclusive wherever shown. The current consultation does not collect optional formulation research responses.
+The consultation is for product guidance, not research. Selected concerns, strand thickness, scalp, treatments and washing frequency influence matching to published claims. Hair shape and daily activities inform routine notes, not ranking. Fragrance preference changes ordering; known fragrance sensitivity and regular listed prices set exclusions. “None” is exclusive wherever shown. The current consultation does not collect optional formulation research responses.
 
 ## Verification and release gates
 
@@ -26,8 +26,19 @@ All six screens are for matching, not research. Hair shape and strand thickness 
 - `node node_modules/eslint/bin/eslint.js src`
 - `node --experimental-strip-types --test tests/advisor.test.mjs`
 
-No production Supabase project, email service, retailer catalogue, payment sandbox, browser screenshots, or test accounts were available in this workspace. Database policies, email delivery, scanner service responses, payment callbacks and full customer journeys have therefore **not** been verified against deployed integrations. The advisor introduction was opened in a browser, and the matching, authorization rejection and production safety gates were checked over local HTTP.
+See WEBSITE_REVIEW.md for the latest checks and remaining release work. Hosted Supabase policies, email delivery, scanner-provider responses and payments have not been verified against deployed integrations.
 
 Before a retailer pilot, obtain a verified catalogue with variant, formula, pack size, price, listing source and verification date; agree retailer/branch scope; decide the paid feature's distinct deliverable; approve consent and retention wording; test backups and restoration; add server side rate limiting; and complete a privacy and security review. Site visitors are a convenience sample, not representative of Malaysian consumers. Research participation, marketing and product testing need separate opt-in flows before collecting that data.
 
 The Malaysian Personal Data Protection Commissioner's current guidance and the 2024 amendment need legal review before launch. Technical controls here do not establish legal compliance. Current reference: https://www.pdp.gov.my/ppdpv1/wp-content/uploads/2025/08/GP_DBN_ENG.pdf . Supabase passwordless guidance: https://supabase.com/docs/guides/auth/auth-email-passwordless . Billplz signature guidance: https://support.billplz.com/api .
+
+
+## Sourced catalogue and database
+
+src/data/shampoos.my.json is the current curated source of truth, version my-2026-09-23-v1. Both the public catalogue and advisor use it. ADVISOR_VERSION includes the catalogue version so saved result snapshots retain their provenance.
+
+To provision the database, back up the target and apply the existing security migration, then supabase/migrations/202609230002_shampoo_catalogue.sql and supabase/seed_shampoos.sql in Supabase's SQL editor or migration workflow. The catalogue migration is independent of legacy product data. It creates product, formulation and retailer-listing tables with public read access only to source-reviewed records; client writes are denied.
+
+Regenerate the seed with node scripts/catalogue-seed.mjs after a source review and catalogue version update. Re-running the seed upserts the same IDs. The migration runs once. Applying the seed does not switch application reads to Supabase; that requires an explicit repository adapter and integration tests. No hosted database was modified during this task.
+
+Do not mix this curated catalogue with legacy development recommendation fixtures. Never publish a service-role key. Refer to WEBSITE_REVIEW.md for sourcing limitations and IMAGE_PROVENANCE.md for artwork provenance.

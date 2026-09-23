@@ -28,14 +28,14 @@ export default function Navbar() {
           </Link>
 
           <div className="hidden items-center gap-8 md:flex">
-            <Link href="/#discover" className="text-sm tracking-wide text-muted transition-colors hover:text-charcoal">
-              Discover
+            <Link href="/shampoo-advisor" className="text-sm tracking-wide text-muted transition-colors hover:text-charcoal">
+              Shampoo advisor
             </Link>
             <Link href="/#how-it-works" className="text-sm tracking-wide text-muted transition-colors hover:text-charcoal">
               How It Works
             </Link>
-            <Link href="/#about" className="text-sm tracking-wide text-muted transition-colors hover:text-charcoal">
-              About
+            <Link href="/catalogue" className="text-sm tracking-wide text-muted transition-colors hover:text-charcoal">
+              Catalogue
             </Link>
           </div>
 
@@ -49,7 +49,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="flex flex-col gap-1.5 md:hidden"
+              className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
               aria-label="Toggle menu"
               aria-expanded={mobileOpen}
             >
@@ -77,11 +77,11 @@ export default function Navbar() {
         <div className="animate-fade-in border-t border-sage/10 bg-ivory/98 backdrop-blur-sm md:hidden">
           <div className="flex flex-col gap-0 px-6 py-4">
             <Link
-              href="/#discover"
+              href="/shampoo-advisor"
               onClick={() => setMobileOpen(false)}
               className="border-b border-sage/5 py-3 text-sm tracking-wide text-charcoal"
             >
-              Discover
+              Shampoo advisor
             </Link>
             <Link
               href="/#how-it-works"
@@ -91,11 +91,11 @@ export default function Navbar() {
               How It Works
             </Link>
             <Link
-              href="/#about"
+              href="/catalogue"
               onClick={() => setMobileOpen(false)}
               className="border-b border-sage/5 py-3 text-sm tracking-wide text-charcoal"
             >
-              About
+              Catalogue
             </Link>
             <Link
               href="/#scan"

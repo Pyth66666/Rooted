@@ -1,0 +1,342 @@
+{
+  "version": "my-2026-09-23-v1",
+  "products": [
+    {
+      "id": "dove-intense-repair",
+      "brand": "Dove",
+      "name": "Intense Repair Shampoo",
+      "size": "330 ml",
+      "market": "MY",
+      "tags": [
+        "damage",
+        "moisture"
+      ],
+      "claim": "Marketed for dry, rough and damaged hair.",
+      "formulation": {
+        "id": "dove-intense-repair-20260923",
+        "ingredients": "Water, Sodium Laureth Sulfate, Dimethiconol, Sodium Chloride, Cocamidopropyl Betaine, Sodium Gluconate, Perfume, Glycerin, Glycol Distearate, Citric Acid, TEA-Dodecylbenzenesulfonate, Sodium Benzoate, Carbomer, Guar Hydroxypropyltrimonium Chloride, Cocamide MEA, PEG-45M, Trideceth-10, Disodium EDTA, Phenoxyethanol, Sodium Hydroxide, Helianthus Annuus (Sunflower) Seed Oil, Hydrolyzed Soy Protein.",
+        "ingredientsComplete": true,
+        "fragrance": true,
+        "sourceUrl": "https://www.watsons.com.my/dove-intense-repair-shampoo-330ml/p/BP_59799",
+        "sourceName": "Watsons Malaysia",
+        "reviewedAt": "2026-09-23",
+        "status": "source-reviewed",
+        "note": "Online ingredient snapshot; compare with the bottle before use."
+      },
+      "listing": {
+        "id": "BP_59799",
+        "retailer": "Watsons Malaysia",
+        "url": "https://www.watsons.com.my/dove-intense-repair-shampoo-330ml/p/BP_59799",
+        "price": 11.9,
+        "regularPrice": 15.9,
+        "currency": "MYR",
+        "observedAt": "2026-09-23",
+        "stock": "unknown",
+        "affiliate": false
+      }
+    },
+    {
+      "id": "elseve-hyaluron-moisture",
+      "brand": "L’Oréal Paris Elseve",
+      "name": "Hyaluron Moisture Shampoo",
+      "size": "280 ml",
+      "market": "MY",
+      "tags": [
+        "moisture"
+      ],
+      "claim": "Marketed for hydration and a fuller feel in dehydrated hair.",
+      "formulation": {
+        "id": "elseve-hyaluron-moisture-20260923",
+        "ingredients": "Aqua, Sodium Laureth Sulfate, Dimethicone, Glycol Distearate, Sodium Chloride, Cocamidopropyl Betaine, Guar Hydroxypropyltrimonium Chloride, Cocobetaine, Cocos Nucifera Oil / Coconut Oil, Sodium Benzoate, Sodium Hydroxide, Sodium Hyaluronate, Steareth-6, Phenoxyethanol, Acetic Acid, PEG-100 Stearate, Trideceth-10, Trideceth-3, Salicylic Acid, Limonene, Fumaric Acid, Amodimethicone, Carbomer, Citric Acid, Hexylene Glycol, Glycerin, Fragrance.",
+        "ingredientsComplete": true,
+        "fragrance": true,
+        "sourceUrl": "https://www.watsons.com.my/l-oreal-paris-elseve-elseve-hyaluron-shampoo-280ml/p/BP_1005526",
+        "sourceName": "Watsons Malaysia",
+        "reviewedAt": "2026-09-23",
+        "status": "source-reviewed",
+        "note": "Online ingredient snapshot; compare with the bottle before use."
+      },
+      "listing": {
+        "id": "BP_1005526",
+        "retailer": "Watsons Malaysia",
+        "url": "https://www.watsons.com.my/l-oreal-paris-elseve-elseve-hyaluron-shampoo-280ml/p/BP_1005526",
+        "price": 12.54,
+        "regularPrice": 20.9,
+        "currency": "MYR",
+        "observedAt": "2026-09-23",
+        "stock": "unknown",
+        "affiliate": false
+      }
+    },
+    {
+      "id": "everstrong-thickening",
+      "brand": "L’Oréal Paris Hair Expert",
+      "name": "EverStrong Thickening Shampoo",
+      "size": "250 ml",
+      "market": "MY",
+      "tags": [
+        "volume",
+        "oil"
+      ],
+      "claim": "Marketed for thin, fragile hair and cleansing excess oils and buildup.",
+      "formulation": {
+        "id": "everstrong-thickening-20260923",
+        "ingredients": "Aqua / Water / Eau, Sodium Cocoyl Isethionate, Sodium Lauryl Sulfoacetate, Disodium Laureth Sulfosuccinate, Cocamidopropyl Betaine, Sodium Lauroyl Sarcosinate, Glycol Distearate, Glycereth-26, Decyl Glucoside, Parfum / Fragrance, Hydrogenated Coconut Acid, Sodium Chloride, Amodimethicone, PPG-5-Ceteth-20, Sodium Isethionate, Polyquaternium-7, PEG-55 Propylene Glycol Oleate, Arginine, Propylene Glycol, Carbomer, Benzoic Acid, Benzyl Salicylate, Hexyl Cinnamal, Linalool, Tocopherol, Trideceth-6, Benzyl Alcohol, Limonene, Sodium Benzoate, 2-Oleamido-1,3-Octadecanediol, Cetrimonium Chloride, Juniperus Communis Oil / Juniperus Communis Fruit Oil, Methylchloroisothiazolinone, Rosmarinus Officinalis Leaf Oil / Rosemary Leaf Oil, Methylisothiazolinone, Sodium Hydroxide, Citric Acid.",
+        "ingredientsComplete": true,
+        "fragrance": true,
+        "sourceUrl": "https://www.watsons.com.my/l-oreal-hair-expert-everstrong-thickening-shampoo-250ml/p/BP_37682",
+        "sourceName": "Watsons Malaysia",
+        "reviewedAt": "2026-09-23",
+        "status": "source-reviewed",
+        "note": "Online ingredient snapshot; compare with the bottle before use."
+      },
+      "listing": {
+        "id": "BP_37682",
+        "retailer": "Watsons Malaysia",
+        "url": "https://www.watsons.com.my/l-oreal-hair-expert-everstrong-thickening-shampoo-250ml/p/BP_37682",
+        "price": 22.5,
+        "regularPrice": 37.5,
+        "currency": "MYR",
+        "observedAt": "2026-09-23",
+        "stock": "unknown",
+        "affiliate": false
+      }
+    },
+    {
+      "id": "everpure-frizz-defy",
+      "brand": "L’Oréal Paris Hair Expert",
+      "name": "EverPure Frizz Defy Shampoo",
+      "size": "250 ml",
+      "market": "MY",
+      "tags": [
+        "frizz",
+        "colour"
+      ],
+      "claim": "Marketed for frizz and humidity protection in colour-treated hair.",
+      "formulation": {
+        "id": "everpure-frizz-defy-20260923",
+        "ingredients": "Aqua / Water / Eau, Coco-Betaine, Disodium Laureth Sulfosuccinate, Sodium Cocoyl Isethionate, Sodium Lauryl Sulfoacetate, Sodium Lauroyl Sarcosinate, Glycol Distearate, Sodium Chloride, Decyl Glucoside, Parfum / Fragrance, Polyquaternium-10, Sodium Hydroxide, Amodimethicone, PPG-5-Ceteth-20, Citric Acid, PEG-55 Propylene Glycol Oleate, Propylene Glycol, Carbomer, Acrylates / Beheneth-25 Methacrylate Copolymer, Tocopherol, Benzophenone-4, Benzoic Acid, Trideceth-6, Hexyl Cinnamal, Hydroxycitronellal, Magnesium Nitrate, Sclerocarya Birrea Seed Oil, Sodium Benzoate, Cetrimonium Chloride, Isoeugenol, Tetrasodium EDTA, Methylchloroisothiazolinone, Rosmarinus Officinalis Leaf Oil / Rosemary Leaf Oil, Magnesium Chloride, Methylisothiazolinone.",
+        "ingredientsComplete": true,
+        "fragrance": true,
+        "sourceUrl": "https://www.watsons.com.my/l-oreal-hair-expert-ever-pure-frizz-defy-shampoo-250ml/p/BP_1002136",
+        "sourceName": "Watsons Malaysia",
+        "reviewedAt": "2026-09-23",
+        "status": "source-reviewed",
+        "note": "Online ingredient snapshot; compare with the bottle before use."
+      },
+      "listing": {
+        "id": "BP_1002136",
+        "retailer": "Watsons Malaysia",
+        "url": "https://www.watsons.com.my/l-oreal-hair-expert-ever-pure-frizz-defy-shampoo-250ml/p/BP_1002136",
+        "price": 22.5,
+        "regularPrice": 37.5,
+        "currency": "MYR",
+        "observedAt": "2026-09-23",
+        "stock": "unknown",
+        "affiliate": false
+      }
+    },
+    {
+      "id": "qv-gentle",
+      "brand": "QV",
+      "name": "Gentle Shampoo",
+      "size": "250 g",
+      "market": "MY",
+      "tags": [
+        "comfort",
+        "daily"
+      ],
+      "claim": "Manufacturer describes a fragrance-free shampoo for dry or sensitive scalps.",
+      "formulation": {
+        "id": "qv-gentle-20260923",
+        "ingredients": "Aqua (Water), Glycerin, TEA-Lauryl Sulfate, Sodium Cocoyl Isethionate, Disodium Cocoamphodiacetate, Lauryl Betaine, Acrylates/C10-30 Alkyl Acrylate Crosspolymer, Polyquaternium-44, Panthenol, Aminomethyl Propanol, Methylparaben, Propylparaben.",
+        "ingredientsComplete": true,
+        "fragrance": false,
+        "sourceUrl": "https://www.qvskincare.com/my/en/products/qv-gentle-shampoo.html",
+        "sourceName": "QV Malaysia",
+        "reviewedAt": "2026-09-23",
+        "status": "source-reviewed",
+        "note": "Online ingredient snapshot; compare with the bottle before use."
+      },
+      "listing": {
+        "id": "qv-hair-gentle-shampoo-250g",
+        "retailer": "Alive Pharmacy",
+        "url": "https://www.alivepharmacy.com.my/product/qv-hair-gentle-shampoo-250g",
+        "price": 59.9,
+        "regularPrice": 59.9,
+        "currency": "MYR",
+        "observedAt": "2026-09-23",
+        "stock": "unknown",
+        "affiliate": false
+      }
+    },
+    {
+      "id": "sukin-natural-balance",
+      "brand": "Sukin",
+      "name": "Natural Balance Shampoo",
+      "size": "500 ml",
+      "market": "MY",
+      "tags": [
+        "moisture"
+      ],
+      "claim": "Marketed for cleansing with moisture and lustre.",
+      "formulation": {
+        "id": "sukin-natural-balance-20260923",
+        "ingredients": "Water (Aqua), Aloe Barbadensis Leaf Juice, Cocamidopropyl Betaine, Sodium Cocoyl Isethionate, Lauryl Glucoside, Panthenol (Pro-Vitamin B5), Arctium Lappa Root Extract (Burdock), Equisetum Arvense Extract (Horsetail), Urtica Dioica (Nettle) Leaf Extract, Adansonia Digitata Seed Oil (Baobab), Citrus Nobilis (Mandarin Orange) Peel Oil, Citrus Reticulata (Tangerine) Peel Oil, Lavandula Angustifolia (Lavender) Oil, Helianthus Annuus (Sunflower) Seed Oil, Melaleuca Alternifolia (Tea Tree) Leaf Extract, Hibiscus Sabdariffa Fruit Extract, Glycerin, Vanillin, Tocopherol (Vitamin E), Polyquaternium-10, Erythritol, Sodium Gluconate, Citric Acid, Sodium Chloride, Phenoxyethanol, Benzyl Alcohol, Sodium Benzoate, Potassium Sorbate, Limonene, Linalool.",
+        "ingredientsComplete": true,
+        "fragrance": true,
+        "sourceUrl": "https://www.watsons.com.my/sukin-natural-balance-shampoo-500ml/p/BP_1026839",
+        "sourceName": "Watsons Malaysia",
+        "reviewedAt": "2026-09-23",
+        "status": "source-reviewed",
+        "note": "Contains fragrant citrus and lavender oils; it is not treated as fragrance-free."
+      },
+      "listing": {
+        "id": "BP_1026839",
+        "retailer": "Watsons Malaysia",
+        "url": "https://www.watsons.com.my/sukin-natural-balance-shampoo-500ml/p/BP_1026839",
+        "price": 60.72,
+        "regularPrice": 75.9,
+        "currency": "MYR",
+        "observedAt": "2026-09-23",
+        "stock": "unknown",
+        "affiliate": false
+      }
+    },
+    {
+      "id": "sukin-volumising",
+      "brand": "Sukin",
+      "name": "Volumising Shampoo",
+      "size": "500 ml",
+      "market": "MY",
+      "tags": [
+        "volume"
+      ],
+      "claim": "Marketed for lightweight body and fullness.",
+      "formulation": {
+        "id": "sukin-volumising-20260923",
+        "ingredients": "Water (Aqua), Aloe Barbadensis Leaf Juice, Cocamidopropyl Betaine, Sodium Cocoyl Isethionate, Lauryl Glucoside, Sodium Chloride, Hydrolyzed Soy Protein, Panthenol (Pro-Vitamin B5), Hydrolyzed Rice Protein, Ananas Sativus (Pineapple) Fruit Extract, Carica Papaya (Papaya) Fruit Extract, Mangifera Indica (Mango) Fruit Extract, Helianthus Annuus (Sunflower) Seed Oil, Glycerin, Polyquaternium-10, Citric Acid, Sodium Benzoate, Potassium Sorbate, Tocopherol (Vitamin E), Sodium Gluconate, Phenoxyethanol, Benzyl Alcohol, Fragrance (Parfum).",
+        "ingredientsComplete": true,
+        "fragrance": true,
+        "sourceUrl": "https://www.watsons.com.my/sukin-volumising-shampoo-500ml/p/BP_1026846",
+        "sourceName": "Watsons Malaysia",
+        "reviewedAt": "2026-09-23",
+        "status": "source-reviewed",
+        "note": "Online ingredient snapshot; compare with the bottle before use."
+      },
+      "listing": {
+        "id": "BP_1026846",
+        "retailer": "Watsons Malaysia",
+        "url": "https://www.watsons.com.my/sukin-volumising-shampoo-500ml/p/BP_1026846",
+        "price": 60.72,
+        "regularPrice": 75.9,
+        "currency": "MYR",
+        "observedAt": "2026-09-23",
+        "stock": "unknown",
+        "affiliate": false
+      }
+    },
+    {
+      "id": "sukin-hydrating",
+      "brand": "Sukin",
+      "name": "Hydrating Shampoo",
+      "size": "500 ml",
+      "market": "MY",
+      "tags": [
+        "moisture",
+        "damage",
+        "frizz"
+      ],
+      "claim": "Marketed for moisture and frizz care in dry, damaged hair.",
+      "formulation": {
+        "id": "sukin-hydrating-20260923",
+        "ingredients": "Water (Aqua), Aloe Barbadensis Leaf Juice, Cocamidopropyl Betaine, Sodium Cocoyl Isethionate, Lauryl Glucoside, Hydrolyzed Sodium Hyaluronate, Butyrospermum Parkii (Shea) Butter, Cocos Nucifera (Coconut) Fruit Extract, Olea Europaea (Olive) Fruit Oil, Helianthus Annuus (Sunflower) Seed Oil, Anigozanthos Flavidus Extract (Kangaroo Paw), Tasmannia Lanceolata Leaf Extract (Tazman Pepper), Glycerin, Tocopherol (Vitamin E), Sodium Chloride, Sodium Gluconate, Polyquaternium-10, Citric Acid, Sodium Benzoate, Phenoxyethanol, Benzyl Alcohol, Fragrance (Parfum), Limonene, Citral.",
+        "ingredientsComplete": true,
+        "fragrance": true,
+        "sourceUrl": "https://www.watsons.com.my/sukin-hydrating-shampoo-500ml/p/BP_1026842",
+        "sourceName": "Watsons Malaysia",
+        "reviewedAt": "2026-09-23",
+        "status": "source-reviewed",
+        "note": "Online ingredient snapshot; compare with the bottle before use."
+      },
+      "listing": {
+        "id": "BP_1026842",
+        "retailer": "Watsons Malaysia",
+        "url": "https://www.watsons.com.my/sukin-hydrating-shampoo-500ml/p/BP_1026842",
+        "price": 60.72,
+        "regularPrice": 75.9,
+        "currency": "MYR",
+        "observedAt": "2026-09-23",
+        "stock": "unknown",
+        "affiliate": false
+      }
+    },
+    {
+      "id": "head-shoulders-clean-balanced",
+      "brand": "Head & Shoulders",
+      "name": "Clean and Balanced Shampoo",
+      "size": "650 ml",
+      "market": "MY",
+      "tags": [
+        "flakes",
+        "daily"
+      ],
+      "claim": "Listed as an anti-dandruff shampoo suitable for daily use.",
+      "formulation": {
+        "id": "head-shoulders-clean-balanced-20260923",
+        "ingredients": "Water, Sodium Laureth Sulfate, Sodium Xylenesulfonate, Dimethicone, Glycol Distearate, Sodium Lauryl Sulfate, Fragrance, Cocamidopropyl Betaine, Cocamide MEA, Sodium Citrate, Piroctone Olamine, Sodium Chloride, Citric Acid, Sodium Benzoate, Guar Hydroxypropyltrimonium Chloride, Tetrasodium EDTA, Stearyl Alcohol, Cetyl Alcohol, Polyquaternium-76, Methylchloroisothiazolinone, Methylisothiazolinone.",
+        "ingredientsComplete": true,
+        "fragrance": true,
+        "sourceUrl": "https://www.watsons.com.my/head-shoulders-clean-and-balanced-shampoo-650ml/p/BP_1011392",
+        "sourceName": "Watsons Malaysia",
+        "reviewedAt": "2026-09-23",
+        "status": "source-reviewed",
+        "note": "Online ingredient snapshot; compare with the bottle before use."
+      },
+      "listing": {
+        "id": "BP_1011392",
+        "retailer": "Watsons Malaysia",
+        "url": "https://www.watsons.com.my/head-shoulders-clean-and-balanced-shampoo-650ml/p/BP_1011392",
+        "price": 28.82,
+        "regularPrice": 33.9,
+        "currency": "MYR",
+        "observedAt": "2026-09-23",
+        "stock": "unknown",
+        "affiliate": false
+      }
+    },
+    {
+      "id": "head-shoulders-bare",
+      "brand": "Head & Shoulders",
+      "name": "Bare Pure Clean Shampoo",
+      "size": "400 ml",
+      "market": "MY",
+      "tags": [
+        "flakes"
+      ],
+      "claim": "Listed as an anti-dandruff shampoo with nine ingredients.",
+      "formulation": {
+        "id": "head-shoulders-bare-20260923",
+        "ingredients": "Water, Lauramidopropyl Betaine, Sodium Cocoyl Isethionate, Fragrance, Piroctone Olamine, Sodium Salicylate, Sodium Benzoate, Polyquaternium-10, Citric Acid.",
+        "ingredientsComplete": true,
+        "fragrance": true,
+        "sourceUrl": "https://www.watsons.com.my/head-shoulders-bare-pure-clean-shampoo-400ml/p/BP_1026764",
+        "sourceName": "Watsons Malaysia",
+        "reviewedAt": "2026-09-23",
+        "status": "source-reviewed",
+        "note": "Online ingredient snapshot; compare with the bottle before use."
+      },
+      "listing": {
+        "id": "BP_1026764",
+        "retailer": "Watsons Malaysia",
+        "url": "https://www.watsons.com.my/head-shoulders-bare-pure-clean-shampoo-400ml/p/BP_1026764",
+        "price": 31.92,
+        "regularPrice": 39.9,
+        "currency": "MYR",
+        "observedAt": "2026-09-23",
+        "stock": "unknown",
+        "affiliate": false
+      }
+    }
+  ]
+}

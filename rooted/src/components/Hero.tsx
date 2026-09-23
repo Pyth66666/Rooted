@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-ivory pt-20">
@@ -36,9 +38,13 @@ export default function Hero() {
           <div className="animate-fade-up animate-delay-300 relative flex items-center justify-center lg:h-full">
             <div className="relative w-full max-w-lg">
               <div className="aspect-[4/5] overflow-hidden rounded-sm bg-cream">
-                <img
-                  src="/hero.jpg"
-                  alt="Hair care product"
+                <Image
+                  src="/rooted-editorial.webp"
+                  width={1536}
+                  height={1024}
+                  preload
+                  sizes="(max-width: 1023px) 100vw, 50vw"
+                  alt="AI-created editorial still life of unbranded sage and ivory shampoo bottles"
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -49,7 +55,6 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-cream/60 to-transparent" />
     </section>
   );
 }

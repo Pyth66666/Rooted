@@ -14,6 +14,7 @@ export default function ProductResult({ product }: Props) {
   const [identityDraft, setIdentityDraft] = useState(identity);
   const [editingIdentity, setEditingIdentity] = useState(false);
   const [editing, setEditing] = useState(false);
+  const [ingredientsCorrected, setIngredientsCorrected] = useState(false);
   const [draft, setDraft] = useState(product.ingredientsRaw ?? "");
 
   const dirty =
@@ -37,6 +38,7 @@ export default function ProductResult({ product }: Props) {
         }));
       return [...kept, ...added];
     });
+    setIngredientsCorrected(true);
     setEditing(false);
   };
 
@@ -77,7 +79,7 @@ export default function ProductResult({ product }: Props) {
             <h3 className="mb-2 font-serif text-2xl font-medium text-charcoal">
               What&apos;s inside?
             </h3>
-            {product.lowConfidence && !editing && (
+            {!editing && (
               <button
                 onClick={() => {
                   setDraft(ingredients.map((i) => i.name).join(", "));
@@ -141,7 +143,7 @@ export default function ProductResult({ product }: Props) {
             So... what does all of this actually mean?
           </h3>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
-            {dirty || identityChanged ? "You corrected the scan. The original automated summary may no longer apply; review the corrected details above." : product.summary}
+            {ingredientsCorrected || identityChanged ? "You corrected the scan. The original automated summary may no longer apply; review the corrected details above." : product.summary}
           </p>
 
           <div className="mt-8 grid gap-8 sm:grid-cols-2">
@@ -150,7 +152,7 @@ export default function ProductResult({ product }: Props) {
                 Best suited for
               </p>
               <ul className="space-y-1.5">
-                {product.bestFor.map((item) => (
+                {(ingredientsCorrected || identityChanged ? ["Reassessment needed after your correction."] : product.bestFor).map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-charcoal">
                     <span className="h-1 w-1 rounded-full bg-sage/50" />
                     {item}
@@ -163,7 +165,7 @@ export default function ProductResult({ product }: Props) {
                 Things you may want to consider
               </p>
               <ul className="space-y-1.5">
-                {product.consider.map((item) => (
+                {(ingredientsCorrected || identityChanged ? ["Previous suggestions have been cleared. Check the corrected label before use."] : product.consider).map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-charcoal">
                     <span className="h-1 w-1 rounded-full bg-earth/50" />
                     {item}

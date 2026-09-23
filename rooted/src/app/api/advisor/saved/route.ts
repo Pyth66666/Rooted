@@ -1,5 +1,5 @@
 import { verifiedUser } from "@/lib/advisor-auth";
-import { parseAdvisorAnswers, matchDemo, ADVISOR_VERSION } from "@/lib/advisor";
+import { parseAdvisorAnswers, recommendShampoos, ADVISOR_VERSION } from "@/lib/advisor";
 import { supabase } from "@/lib/db";
 
 export async function GET(request: Request) {
@@ -18,7 +18,7 @@ export async function POST(request: Request) {
   try { input = await request.json(); } catch { return Response.json({ error: "Invalid answers." }, { status: 400 }); }
   const answers = parseAdvisorAnswers(input);
   if (!answers) return Response.json({ error: "Invalid answers." }, { status: 400 });
-  const { data, error } = await supabase().from("advisor_profiles").insert({ user_id: user.id, answers, recommendations: matchDemo(answers), version: ADVISOR_VERSION }).select("id").single();
+  const { data, error } = await supabase().from("advisor_profiles").insert({ user_id: user.id, answers, recommendations: recommendShampoos(answers), version: ADVISOR_VERSION }).select("id").single();
   if (error) return Response.json({ error: "Could not save profile." }, { status: 503 });
   return Response.json({ id: data.id }, { status: 201 });
 }
