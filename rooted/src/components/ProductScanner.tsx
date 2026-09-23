@@ -18,7 +18,10 @@ export default function ProductScanner({ onResult }: Props) {
 
   const handleFile = useCallback(
     async (file: File) => {
-      if (!file.type.startsWith("image/")) return;
+      if (!["image/jpeg", "image/png"].includes(file.type) || file.size > 10 * 1024 * 1024) {
+        setError("Choose a JPG or PNG image under 10 MB.");
+        return;
+      }
       track("upload_started");
 
       const url = URL.createObjectURL(file);
@@ -48,7 +51,11 @@ export default function ProductScanner({ onResult }: Props) {
           throw new Error(product?.error || "Something went wrong.");
         }
         clearInterval(timer);
-        track("analysis_viewed");
+        try {
+          localStorage.setItem("rooted_last_scanned", /shampoo/i.test(product.category ?? "") ? product.name ?? "" : "");
+        } catch {
+          /* ignore */
+        }
         onResult(product as ProductResult, url);
       } catch (err) {
         clearInterval(timer);
@@ -132,8 +139,7 @@ export default function ProductScanner({ onResult }: Props) {
           onDrop={onDrop}
           onDragOver={onDragOver}
           onDragLeave={onDragLeave}
-          onClick={() => inputRef.current?.click()}
-          className={`relative mx-auto mt-12 max-w-xl cursor-pointer rounded-sm border-2 border-dashed p-12 transition-all sm:p-16 ${
+          className={`relative mx-auto mt-12 max-w-xl rounded-sm border-2 border-dashed p-12 transition-all sm:p-16 ${
             isDragging
               ? "border-sage bg-sage/5"
               : "border-sage/20 bg-cream/50 hover:border-sage/40 hover:bg-cream"
@@ -143,7 +149,9 @@ export default function ProductScanner({ onResult }: Props) {
             ref={inputRef}
             type="file"
             accept="image/png,image/jpeg"
-            className="hidden"
+            className="sr-only"
+            id="product-photo"
+            aria-label="Upload a clear photo of the product name and ingredient label"
             onChange={(e) => {
               const f = e.target.files?.[0];
               if (f) handleFile(f);
@@ -168,7 +176,7 @@ export default function ProductScanner({ onResult }: Props) {
               Drop your product photo here
             </p>
             <p className="mt-1 text-sm text-muted">
-              or <span className="underline decoration-sage/30 underline-offset-2">choose a photo</span>
+              or <label htmlFor="product-photo" className="cursor-pointer underline decoration-sage/30 underline-offset-2 focus-within:outline-2">choose a photo</label>
             </p>
             <p className="mt-4 text-xs text-muted/60">
               JPG, PNG up to 10MB
@@ -177,7 +185,7 @@ export default function ProductScanner({ onResult }: Props) {
         </div>
 
         {error && (
-          <p className="mx-auto mt-4 max-w-md rounded-sm bg-red-50 px-4 py-3 text-sm text-red-700">
+          <p role="alert" className="mx-auto mt-4 max-w-md rounded-sm bg-red-50 px-4 py-3 text-sm text-red-700">
             {error}
           </p>
         )}

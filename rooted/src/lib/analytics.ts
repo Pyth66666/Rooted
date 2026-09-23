@@ -8,7 +8,10 @@ type EventName =
   | "interest_maybe"
   | "interest_no"
   | "email_submitted"
-  | "hair_concern_selected";
+  | "interest_form_submitted"
+  | "hair_concern_selected"
+  | "paid_cta_clicked"
+  | "payment_completed_dev";
 
 export function track(event: EventName, data?: Record<string, string>) {
   if (typeof window === "undefined") return;

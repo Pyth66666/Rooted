@@ -1,15 +1,16 @@
-import type { Ingredient } from "@/lib/mock-data";
+import type { IngredientAnalysis } from "@/lib/types";
 
-const CATEGORY_COLORS: Record<Ingredient["category"], string> = {
+const CATEGORY_COLORS: Record<string, string> = {
   HYDRATING: "bg-sage/10 text-sage",
   CONDITIONING: "bg-earth/10 text-earth",
   CLEANSING: "bg-[#5A6B7A]/10 text-[#5A6B7A]",
   BOTANICAL: "bg-[#6B7A4A]/10 text-[#6B7A4A]",
   FRAGRANCE: "bg-[#8A6B7A]/10 text-[#8A6B7A]",
   PRESERVATIVE: "bg-muted/10 text-muted",
+  UNCLASSIFIED: "bg-cream text-charcoal",
 };
 
-export default function IngredientCard({ ingredient }: { ingredient: Ingredient }) {
+export default function IngredientCard({ ingredient }: { ingredient: IngredientAnalysis }) {
   return (
     <div className="group border-b border-sage/8 py-5 transition-colors last:border-0 hover:bg-cream/40 px-4 -mx-4 rounded-sm">
       <div className="flex items-start justify-between gap-4">
@@ -20,7 +21,7 @@ export default function IngredientCard({ ingredient }: { ingredient: Ingredient 
             </h4>
             <span
               className={`rounded-full px-3 py-0.5 text-[10px] font-medium uppercase tracking-[0.1em] ${
-                CATEGORY_COLORS[ingredient.category]
+                CATEGORY_COLORS[ingredient.category] ?? CATEGORY_COLORS.UNCLASSIFIED
               }`}
             >
               {ingredient.category}

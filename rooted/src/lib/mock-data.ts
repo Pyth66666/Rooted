@@ -13,6 +13,8 @@ export interface ProductResult {
   bestFor: string[];
   consider: string[];
   ingredients: Ingredient[];
+  ingredientsRaw?: string;
+  lowConfidence?: boolean;
 }
 
 export const MOCK_PRODUCT: ProductResult = {

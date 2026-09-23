@@ -8,6 +8,7 @@ function supabase() {
 }
 
 export async function POST(request: Request) {
+  if (process.env.NODE_ENV === "production") return Response.json({ error: "Interest collection is unavailable." }, { status: 503 });
   let body: Record<string, unknown>;
   try {
     body = await request.json();

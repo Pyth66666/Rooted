@@ -1,12 +1,4 @@
-import type { ProductResult } from "@/lib/mock-data";
-import { createClient } from "@supabase/supabase-js";
-
-function supabase() {
-  const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !key) throw new Error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY");
-  return createClient(url, key);
-}
+import type { ProductResult } from "@/lib/types";
 
 const CATEGORIES = [
   "HYDRATING",
@@ -65,7 +57,7 @@ export async function POST(request: Request) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     return Response.json(
-      { error: "Server missing GEMINI_API_KEY. Add it to .env.local." },
+      { error: "Photo analysis is temporarily unavailable." },
       { status: 500 }
     );
   }
@@ -84,22 +76,13 @@ export async function POST(request: Request) {
     return Response.json({ error: "Image too large (max 10MB)." }, { status: 400 });
   }
 
-  const imageBase64 = Buffer.from(await file.arrayBuffer()).toString("base64");
-
-  const stamp = Date.now();
-  let imageUrl: string | null = null;
-  try {
-    const db = supabase();
-    const path = `uploads/${stamp}-${file.name || "photo.jpg"}`;
-    const { error } = await db.storage.from("rooted").upload(path, file, {
-      contentType: file.type || "image/jpeg",
-      upsert: false,
-    });
-    if (error) throw error;
-    imageUrl = db.storage.from("rooted").getPublicUrl(path).data.publicUrl;
-  } catch (err) {
-    console.error("Storage save failed:", err);
+  const bytes = Buffer.from(await file.arrayBuffer());
+  const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
+  const png = bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+  if (!((file.type === "image/jpeg" && jpeg) || (file.type === "image/png" && png))) {
+    return Response.json({ error: "Choose a valid JPG or PNG photo." }, { status: 400 });
   }
+  const imageBase64 = bytes.toString("base64");
 
   let data: unknown;
   try {
@@ -190,22 +173,22 @@ export async function POST(request: Request) {
         name: String(i.name).slice(0, 200),
         category: (CATEGORIES as readonly string[]).includes(i.category)
           ? (i.category as Category)
-          : "BOTANICAL",
+          : "UNCLASSIFIED",
         description: String(i.description ?? "").slice(0, 800),
         detail: String(i.detail ?? "").slice(0, 2500),
       })),
+    // Raw, unparsed ingredient names for manual review/correction.
+    ingredientsRaw: parsed.ingredients
+      .filter((i) => i && typeof i.name === "string")
+      .map((i) => String(i.name))
+      .join(", "),
   };
-
-  try {
-    await supabase()
-      .storage.from("rooted")
-      .upload(`results/${stamp}.json`, JSON.stringify({ ...result, imageUrl }), {
-        contentType: "application/json",
-        upsert: false,
-      });
-  } catch (err) {
-    console.error("Result save failed:", err);
-  }
+  // ponytail: heuristic low-confidence — model gives no numeric OCR confidence;
+  // flag when few ingredients or a telling summary. Replace with a real OCR
+  // confidence source when the vision pipeline adds one.
+  result.lowConfidence =
+    (result.ingredients.length > 0 && result.ingredients.length <= 4) ||
+    /could not|cannot read|unable to read|blurr/i.test(result.summary);
 
   return Response.json(result);
 }
