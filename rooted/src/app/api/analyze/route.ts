@@ -58,7 +58,7 @@ const responseSchema = {
 };
 
 export async function POST(request: Request) {
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = process.env.NVIDIA_API_KEY;
   if (!apiKey) {
     return Response.json(
       { error: "Photo analysis is temporarily unavailable." },
@@ -94,7 +94,7 @@ export async function POST(request: Request) {
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
         res = await fetch(
-      "https://api.openai.com/v1/responses",
+      "https://integrate.api.nvidia.com/v1/chat/completions",
       {
         method: "POST",
         signal: AbortSignal.timeout(22000),
@@ -103,15 +103,14 @@ export async function POST(request: Request) {
           Authorization: `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          model: process.env.OPENAI_MODEL || "gpt-4.1-mini",
-          store: false,
-          instructions: PROMPT,
-          input: [{ role: "user", content: [
-            { type: "input_text", text: "Analyze this product label." },
-            { type: "input_image", image_url: `data:${file.type};base64,${imageBase64}`, detail: "high" },
+          model: process.env.NVIDIA_MODEL || "meta/llama-3.2-90b-vision-instruct",
+          messages: [{ role: "user", content: [
+            { type: "text", text: PROMPT + "\nReturn one JSON object matching this schema, without markdown: " + JSON.stringify(responseSchema) },
+            { type: "image_url", image_url: { url: `data:${file.type};base64,${imageBase64}` } },
           ] }],
-          text: { format: { type: "json_schema", name: "product_analysis", strict: true, schema: responseSchema } },
-          max_output_tokens: 5000,
+          stream: false,
+          temperature: 0.2,
+          max_tokens: 4096,
         }),
       }
     );
@@ -125,9 +124,13 @@ export async function POST(request: Request) {
     if (!res) throw new Error("No response from photo service.");
     if (!res.ok) {
       await res.body?.cancel();
-      console.error("OpenAI API error:", res.status);
+      console.error("NVIDIA API error:", res.status);
       return Response.json(
-        { error: "Photo analysis is busy right now. Please try again shortly, or explore the free shampoo advisor." },
+        { error: res.status === 429
+          ? "The photo service has reached its request limit. Please try again later."
+          : [401, 403].includes(res.status)
+            ? "Photo analysis is not configured correctly. Please contact ROOTED."
+            : "Photo analysis is temporarily unavailable. Please try again shortly, or explore the free shampoo advisor." },
         { status: 502 }
       );
     }
@@ -138,14 +141,13 @@ export async function POST(request: Request) {
     return Response.json({ error: "Could not reach AI service." }, { status: 502 });
   }
 
-  const response = data as { status?: string; output?: { type?: string; content?: { type?: string; text?: string }[] }[] } | null;
-  if (response?.status !== "completed") {
+  const response = data as { choices?: { finish_reason?: string; message?: { content?: string } }[] } | null;
+  const choice = response?.choices?.[0];
+  if (choice?.finish_reason !== "stop") {
     return Response.json({ error: "Could not finish reading the label. Please try a clearer photo." }, { status: 422 });
   }
-  const text = response.output?.filter((item) => item.type === "message")
-    .flatMap((item) => item.content ?? [])
-    .filter((part) => part.type === "output_text" && typeof part.text === "string")
-    .map((part) => part.text).join("");
+  const content = choice.message?.content;
+  const text = typeof content === "string" ? content.trim().replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "") : "";
 
   if (!text) {
     return Response.json(
