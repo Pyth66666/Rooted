@@ -45,7 +45,7 @@ export default function ProductScanner({ onResult }: Props) {
       try {
         const body = new FormData();
         body.append("image", file);
-        const res = await fetch("/api/analyze", { method: "POST", body });
+        const res = await fetch("/api/analyze", { method: "POST", body, signal: AbortSignal.timeout(55000) });
         const product = await res.json();
         if (!res.ok) {
           throw new Error(product?.error || "Something went wrong.");
@@ -66,6 +66,7 @@ export default function ProductScanner({ onResult }: Props) {
         );
         setIsAnalyzing(false);
         setPreviewUrl(null);
+        URL.revokeObjectURL(url);
       }
     },
     [onResult]
@@ -193,10 +194,10 @@ export default function ProductScanner({ onResult }: Props) {
         <button
           onClick={() => {
             track("scan_clicked");
-            if (typeof navigator !== "undefined" && navigator.mediaDevices) {
+            {
               const input = document.createElement("input");
               input.type = "file";
-              input.accept = "image/*";
+              input.accept = "image/jpeg,image/png";
               input.capture = "environment";
               input.onchange = (e) => {
                 const f = (e.target as HTMLInputElement).files?.[0];
